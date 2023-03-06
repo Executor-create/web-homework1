@@ -1,6 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 require('dotenv').config();
+const usersRouter = require('./api/user/getUsers');
 const theaterRouter = require('./api/theater/getTheater');
 
 const app = express();
@@ -8,6 +9,7 @@ const app = express();
 const setup = require('./DB/mongoose');
 
 app.use(bodyParser.json());
+app.use(usersRouter);
 app.use(theaterRouter);
 
 app.listen(process.env.PORT, () => {
