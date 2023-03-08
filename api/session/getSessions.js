@@ -6,9 +6,11 @@ const router = Router();
 router.get('/sessions', async (req, res) => {
   const { userId } = req.query;
 
-  const result = await Session.find({ user_id: userId });
+  const searchFilters = userId ? { user_id: userId } : {};
+
+  const result = await Session.find(searchFilters);
 
   res.status(200).send(result);
-})
+});
 
-module.exports = router
+module.exports = router;
