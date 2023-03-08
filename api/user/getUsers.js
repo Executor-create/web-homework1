@@ -9,6 +9,6 @@ router.get('/users', async (req, res) => {
   const result = await User.find({ name, email });
 
   res.status(200).send(result);
-})
+});
 
 module.exports = router;
